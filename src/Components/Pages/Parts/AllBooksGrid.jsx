@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import auth from "../../../../firebase.init";
 
 
-const AllPartsGrid = ({ part }) => {
+const AllBooksGrid = ({ book }) => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
 
@@ -13,18 +13,18 @@ const AllPartsGrid = ({ part }) => {
     event.preventDefault();
 
     const info = {
-      item_name: part?.name,
-      item_desc: part?.description,
-      item_category: part?.category,
-      item_image: part?.image,
-      total_amount: part?.price,
+      item_name: book?.name,
+      item_desc: book?.description,
+      item_category: book?.category,
+      item_image: book?.image,
+      total_amount: book?.price,
       cus_name: user?.displayName,
       cus_email: user?.email,
     };
 
     // console.log(info);
 
-    axios.post(`https://autoparts-service-server.vercel.app/api/v1/ssl/init`, info).then((res) => {
+    axios.post(`http://localhost:5000/api/v1/ssl/init`, info).then((res) => {
       console.log(res.data);
       if (res?.data) {
         window.location = res?.data;
@@ -34,10 +34,10 @@ const AllPartsGrid = ({ part }) => {
   };
 
   return (
-    <div onClick={() => navigate(`/parts/${part?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
+    <div onClick={() => navigate(`/books/${book?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
       <div className="mx-2 lg:mb-0 mb-8">
         <div className="h-60">
-          <img src={part?.image} className="w-full h-60" />
+          <img src={book?.image} className="w-full h-60" />
         </div>
         <div className="bg-white">
           <div className="flex items-center justify-between px-4 pt-4">
@@ -59,26 +59,26 @@ const AllPartsGrid = ({ part }) => {
               </svg>
             </div>
             <div className="bg-yellow-200 py-1.5 px-6 rounded-full">
-              <p className="text-xs text-gray-500">{part?.category}</p>
+              <p className="text-xs text-gray-500">{book?.category}</p>
             </div>
           </div>
           <div className="p-4">
             <div className="w-full flex justify-start items-center">
-              {part?.name.length > 15 ? (
-                <h2 className="text-lg font-semibold">{`${part?.name.slice(
+              {book?.name.length > 15 ? (
+                <h2 className="text-lg font-semibold">{`${book?.name.slice(
                   0,
                   15
                 )}...`}</h2>
               ) : (
-                <h2 className="text-lg font-semibold">{`${part?.name}`}</h2>
+                <h2 className="text-lg font-semibold">{`${book?.name}`}</h2>
               )}
             </div>
             <div className="flex justify-between items-center pt-5">
-              <p className="text-xs text-gray-600">Stock:{part?.stock}</p>
+              <p className="text-xs text-gray-600">Stock:{book?.stock}</p>
               <p className="text-xs text-gray-600 pl-5">4 days ago</p>
             </div>
             <p className="text-xs text-gray-600 mt-2">
-              {part?.description.slice(0, 150)}
+              {book?.description.slice(0, 150)}
             </p>
             <div className="flex justify-between items-center mt-4">
               <div>
@@ -94,11 +94,11 @@ const AllPartsGrid = ({ part }) => {
             </div>
             <div className="flex items-center justify-between py-4">
               <h2 className="text-indigo-700 text-xs font-semibold">
-                {part?.sku.slice(0, 17)}
+                {book?.sku.slice(0, 17)}
               </h2>
               <h3 className="text-indigo-700 text-xl font-semibold">
               <span className="pr-1">&#2547;</span>
-                {part?.price}
+                {book?.price}
               </h3>
             </div>
           </div>
@@ -108,4 +108,4 @@ const AllPartsGrid = ({ part }) => {
   );
 };
 
-export default AllPartsGrid;
+export default AllBooksGrid;

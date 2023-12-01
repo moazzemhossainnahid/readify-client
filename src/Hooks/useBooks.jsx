@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 
-const useParts = () => {
-    const [parts, setParts] = useState([]);
+const useBooks = () => {
+    const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        fetch(`https://autoparts-service-server.vercel.app/api/v1/parts`, {
+        fetch(`http://localhost:5000/api/v1/books`, {
             method: "GET",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,
             }
         })
             .then(res => res.json())
-            .then(data => setParts(data?.data?.result))
+            .then(data => setBooks(data?.data?.result))
     }, []);
 
     // console.log(parts);
 
-    return [parts];
+    return [books];
 };
 
-export default useParts;
+export default useBooks;

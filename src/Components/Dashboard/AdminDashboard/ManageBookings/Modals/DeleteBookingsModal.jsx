@@ -6,7 +6,7 @@ const DeleteBookingsModal = ({ deleteBooking, setNumber, number }) => {
     console.log(deleteBooking);
 
     const handleDelete = (id) => {
-        const url = `https://autoparts-service-server.vercel.app/api/v1/bookings/${id}`;
+        const url = `http://localhost:5000/api/v1/bookings/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

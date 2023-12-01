@@ -1,10 +1,10 @@
 import React from "react";
-import AllParts from "../../Components/Pages/Parts/AllParts";
+import AllBooks from "../../Components/Pages/Parts/AllBooks";
 
 const AutoParts = () => {
   return (
     <div className="w-full">
-      <AllParts />
+      <AllBooks />
     </div>
   );
 };

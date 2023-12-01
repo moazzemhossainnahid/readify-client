@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
 
-import ManagePartsRow from "./ManagePartsRow";
-import DeletePartsModal from "./Modals/DeletePartsModal";
+import ManageBooksRow from "./ManageBooksRow";
+import DeleteBooksModal from "./Modals/DeleteBooksModal";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-const ManageParts = () => {
+const ManageBooks = () => {
   const [number, setNumber] = useState(0);
-  const [parts, setParts] = useState(null);
-  const [deletePart, setDeletePart] = useState(null);
+  const [books, setBooks] = useState(null);
+  const [deleteBook, setDeleteBook] = useState(null);
   const { register, handleSubmit, reset } = useForm();
-  const [allParts, setAllParts] = useState(false);
+  const [allBooks, setAllBooks] = useState(false);
 
   const imageUrlKey = "e738f1d16de6b265746b7f82cc157644";
 
   useEffect(() => {
-    fetch("https://autoparts-service-server.vercel.app/api/v1/parts")
+    fetch("http://localhost:5000/api/v1/books")
       .then((res) => res.json())
-      .then((data) => setParts(data?.data));
+      .then((data) => setBooks(data?.data));
   }, [number]);
 
-  console.log(parts);
+  // console.log(books);
 
   function generateSku() {
     const timestamp = Date.now();
@@ -44,7 +44,7 @@ const ManageParts = () => {
       .then((result) => {
         if (result.success) {
           const img = result.data.url;
-          const parts = {
+          const book = {
             name: data.name,
             category: data.category,
             price: data.price,
@@ -55,23 +55,23 @@ const ManageParts = () => {
           };
 
           // send to database
-          fetch(`https://autoparts-service-server.vercel.app/api/v1/parts`, {
+          fetch(`http://localhost:5000/api/v1/books`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
-            body: JSON.stringify(parts),
+            body: JSON.stringify(book),
           })
             .then((res) => res.json())
             .then((data) => {
               //   console.log(data);
               if (data?.status === "Successful") {
-                toast.success("Parts Add Successfully");
+                toast.success("Book Add Successfully");
                 reset();
                 setNumber(number + 1);
               } else {
-                toast.error("Faild to Add Parts");
+                toast.error("Faild to Add Book");
               }
             });
         }
@@ -83,14 +83,14 @@ const ManageParts = () => {
       <div className="w-full flex items-center justify-center my-12">
         <div className="bg-white shadow rounded py-12 px-8 mb-20">
           <p className="md:text-3xl text-xl font-bold pb-10 leading-7 text-center text-gray-700">
-            Total Products: {parts?.totalParts}
+            Total Books: {books?.totalBooks}
           </p>
           <div className="pb-5">
             <label
-              for="addParts"
+              for="addBooks"
               className="rounded btn btn-sm btn-primary btn-outline"
             >
-              Add Parts
+              Add Books
             </label>
           </div>
           <table className="border-collapse w-full bg-slate-200">
@@ -120,60 +120,60 @@ const ManageParts = () => {
             <tbody>
               {/* <!-- row 1 --> */}
 
-              {allParts
-                ? parts?.result?.map((part, index) => (
-                    <ManagePartsRow
-                      key={part?._id}
-                      part={part}
+              {allBooks
+                ? books?.result?.map((book, index) => (
+                    <ManageBooksRow
+                      key={book?._id}
+                      book={book}
                       index={index}
-                      setDeletePart={setDeletePart}
-                    ></ManagePartsRow>
+                      setDeleteBook={setDeleteBook}
+                    ></ManageBooksRow>
                   ))
-                : parts?.result
+                : books?.result
                     ?.slice(0, 7)
-                    ?.map((part, index) => (
-                      <ManagePartsRow
-                        key={part?._id}
-                        part={part}
+                    ?.map((book, index) => (
+                      <ManageBooksRow
+                        key={book?._id}
+                        book={book}
                         index={index}
-                        setDeletePart={setDeletePart}
-                      ></ManagePartsRow>
+                        setDeleteBook={setDeleteBook}
+                      ></ManageBooksRow>
                     ))}
             </tbody>
           </table>
-          {parts?.result?.length > 7 && (
+          {books?.result?.length > 7 && (
             <div className="pt-7">
               <button
-                onClick={() => setAllParts(!allParts)}
+                onClick={() => setAllBooks(!allBooks)}
                 className="btn btn-outline btn-secondary flex items-center justify-center mx-auto"
               >
-                {`${allParts ? "See Less Parts" : "See More Parts"}`}{" "}
+                {`${allBooks ? "See Less Books" : "See More Books"}`}{" "}
                 <span className="text-2xl -mt-1">&#8608;</span>
               </button>
             </div>
           )}
         </div>
-        {deletePart && (
-          <DeletePartsModal
-            deletePart={deletePart}
+        {deleteBook && (
+          <DeleteBooksModal
+          deleteBook={deleteBook}
             setNumber={setNumber}
             number={number}
-          ></DeletePartsModal>
+          ></DeleteBooksModal>
         )}
       </div>
 
       {/* <!-- The add Parts modal --> */}
 
-      <input type="checkbox" id="addParts" class="modal-toggle" />
+      <input type="checkbox" id="addBooks" class="modal-toggle" />
       <div class="modal">
         <div class="modal-box relative  bg-slate-300">
           <label
-            for="addParts"
+            for="addBooks"
             class="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h3 class="text-lg font-bold">Please Add New Parts Information</h3>
+          <h3 class="text-lg font-bold">Please Add New Books Information</h3>
           <form
             onSubmit={handleSubmit(handleAddService)}
             action=""
@@ -182,43 +182,49 @@ const ManageParts = () => {
             <input
               {...register("name")}
               type="text"
-              placeholder="Enter Parts Name"
+              required
+              placeholder="Enter Book Name"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
             />
             <input
               {...register("category")}
               type="text"
-              placeholder="Enter Parts Category"
+              required
+              placeholder="Enter Book Category"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
             />
             <input
               {...register("price")}
               type="text"
-              placeholder="Enter Parts Price"
+              required
+              placeholder="Enter Book Price"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
             />
             <input
               {...register("stock")}
               type="text"
-              placeholder="Enter Parts Stock"
+              required
+              placeholder="Enter Book Stock"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
             />
             <textarea
               {...register("description")}
               type="text"
-              placeholder="Enter Parts Description"
+              required
+              placeholder="Enter Book Description"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
             />
             <input
               {...register("photoURL")}
               type="file"
+              required
               placeholder="Enter Your Image"
               className="file-input file-input-bordered bg-slate-100 my-2 items-center w-full mx-auto block max-w-xs"
             />
             <input
               className="btn px-7 btn-primary my-5 block mx-auto"
               type="submit"
-              value="Add Parts"
+              value="Add Book"
             />
           </form>
         </div>
@@ -227,4 +233,4 @@ const ManageParts = () => {
   );
 };
 
-export default ManageParts;
+export default ManageBooks;

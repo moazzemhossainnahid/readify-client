@@ -5,7 +5,7 @@ const DeleteStafsModal = ({ deleteStaf, setNumber, number }) => {
 
 
     const handleDelete = (id) => {
-        const url = `https://autoparts-service-server.vercel.app/api/v1/stafs/${id}`;
+        const url = `http://localhost:5000/api/v1/stafs/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

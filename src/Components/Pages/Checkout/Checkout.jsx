@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CheckoutCourseDetails from './CheckoutCourseDetails';
 import CheckoutForm from './CheckoutForm';
-import useParts from '../../../Hooks/useParts';
+import useBooks from '../../../Hooks/useBooks';
 
 const Checkout = () => {
-    const [parts] = useParts();
+    const [parts] = useBooks();
     const { id } = useParams();
     const Item = parts?.find(data => data?._id === id);
     const [urlData, setURLData] = useState({});

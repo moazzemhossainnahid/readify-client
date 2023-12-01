@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ManagePartsRow = ({ part, index, setDeletePart}) => {
+const ManageBooksRow = ({ book, index, setDeleteBook}) => {
 
-    const { name, image, category, price } = part;
+    const { name, image, category, price } = book;
 
     return (
         <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
@@ -28,7 +28,7 @@ const ManagePartsRow = ({ part, index, setDeletePart}) => {
             </td>
             <td className="w-full lg:w-auto text-xs text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                 <div className="flex justify-center pb-1 items-center">
-                    <label htmlFor="delete-part-modal" onClick={() => setDeletePart(part)} className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-secondary ">Delete Part</label>
+                    <label htmlFor="delete-book-modal" onClick={() => setDeleteBook(book)} className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-secondary ">Delete Book</label>
                 </div>
 
             </td>
@@ -36,4 +36,4 @@ const ManagePartsRow = ({ part, index, setDeletePart}) => {
     );
 };
 
-export default ManagePartsRow;
+export default ManageBooksRow;

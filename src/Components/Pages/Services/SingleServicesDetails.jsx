@@ -35,7 +35,7 @@ const SingleServicesDetails = () => {
 console.log(booking);
 
     // send to database
-    fetch(`https://autoparts-service-server.vercel.app/api/v1/bookings`, {
+    fetch(`http://localhost:5000/api/v1/bookings`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

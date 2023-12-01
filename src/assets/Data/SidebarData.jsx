@@ -12,8 +12,8 @@ export const SidebarData = [
         icon: faUsers,
     },
     {
-        title: "Manage Parts",
-        href: "mparts",
+        title: "Manage Books",
+        href: "mbooks",
         icon: faShoppingCart,
     },
     {

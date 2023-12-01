@@ -21,7 +21,7 @@ const DBCards = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    fetch(`https://autoparts-service-server.vercel.app/api/v1/users`, {
+    fetch(`http://localhost:5000/api/v1/users`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -32,7 +32,7 @@ const DBCards = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://autoparts-service-server.vercel.app/api/v1/parts`, {
+    fetch(`http://localhost:5000/api/v1/parts`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -43,7 +43,7 @@ const DBCards = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://autoparts-service-server.vercel.app/api/v1/services`, {
+    fetch(`http://localhost:5000/api/v1/services`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -54,7 +54,7 @@ const DBCards = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://autoparts-service-server.vercel.app/api/v1/stafs`, {
+    fetch(`http://localhost:5000/api/v1/stafs`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -65,7 +65,7 @@ const DBCards = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://autoparts-service-server.vercel.app/api/v1/orders`, {
+    fetch(`http://localhost:5000/api/v1/orders`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -76,7 +76,7 @@ const DBCards = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://autoparts-service-server.vercel.app/api/v1/bookings`, {
+    fetch(`http://localhost:5000/api/v1/bookings`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

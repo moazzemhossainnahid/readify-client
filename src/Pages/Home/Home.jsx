@@ -2,7 +2,7 @@ import React from 'react';
 import HomeBanner from '../../Components/Pages/Home/HomeBanner';
 import Newsletter from '../../Components/Pages/Home/Newsletter';
 import AboutOurCompany from '../../Components/Pages/Home/AboutOurCompany';
-import PartsThress from '../../Components/Pages/Home/PartsThress';
+import BooksThree from '../../Components/Pages/Home/BooksThree';
 import ServiceThree from '../../Components/Pages/Home/ServiceThree';
 import HomeTopCarousel from '../../Components/Pages/Home/HomeTopCarousel';
 
@@ -11,7 +11,7 @@ const Home = () => {
         <div className='w-full'>
             <HomeTopCarousel/>
             <HomeBanner/>
-            <PartsThress/>
+            <BooksThree/>
             <ServiceThree/>
             <AboutOurCompany/>
             <Newsletter/>

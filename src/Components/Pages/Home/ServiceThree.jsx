@@ -1,6 +1,6 @@
 import React from "react";
-import useParts from "../../../Hooks/useParts";
-import AllPartsGrid from "../Parts/AllPartsGrid";
+import useBooks from "../../../Hooks/useBooks";
+import AllBooksGrid from "../Parts/AllBooksGrid";
 import { useNavigate } from "react-router-dom";
 import useServices from "../../../Hooks/useServices";
 import AllServicesGrid from "../Services/AllServicesGrid";
