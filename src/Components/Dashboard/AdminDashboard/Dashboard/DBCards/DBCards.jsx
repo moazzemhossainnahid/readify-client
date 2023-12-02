@@ -2,10 +2,10 @@ import {
   faArrowAltCircleRight,
   faBookAtlas,
   faBraille,
-  faCartShopping,
   faListCheck,
-  faBookmark,
   faUsers,
+  faContactBook,
+  faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 const DBCards = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const [parts, setParts] = useState([]);
+  const [books, setBooks] = useState([]);
   const [orders, setOrders] = useState([]);
   const [services, setServices] = useState([]);
   const [stafs, setStafs] = useState([]);
@@ -32,14 +32,14 @@ const DBCards = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/parts`, {
+    fetch(`http://localhost:5000/api/v1/books`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
     })
       .then((res) => res.json())
-      .then((data) => setParts(data?.data?.result));
+      .then((data) => setBooks(data?.data?.result));
   }, []);
 
   useEffect(() => {
@@ -92,7 +92,7 @@ const DBCards = () => {
       <div className="grid md:grid-cols-2 gap-5 py-10">
         {/* Registered Users */}
         <div className="">
-          <div className="flex items-center justify-between bg-[#252525] p-3 rounded-t-xl">
+          <div className="flex items-center h-40 justify-between bg-[#252525] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
                 {users?.length}
@@ -116,24 +116,24 @@ const DBCards = () => {
             </h2>
           </div>
         </div>
-        {/* Total Products */}
+        {/* Total Books */}
         <div className="">
-          <div className="flex items-center justify-between bg-[#17A2BB] p-3 rounded-t-xl">
+          <div className="flex items-center h-40 justify-between bg-[#17A2BB] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
-                {parts?.length}
+                {books?.length}
               </h3>
-              <h3 className="text-md font-bold text-white">Total Parts</h3>
+              <h3 className="text-md font-bold text-white">Total Books</h3>
             </div>
             <div className="">
               <FontAwesomeIcon
                 className="text-[#42424281] text-3xl md:text-4xl"
-                icon={faCartShopping}
+                icon={faBook}
               />
             </div>
           </div>
           <div
-            onClick={() => navigate("/cpanel/mparts")}
+            onClick={() => navigate("/cpanel/mbooks")}
             className="bg-[#0c93ab] cursor-pointer py-2 text-center rounded-b-xl"
           >
             <h2 className="text-md text-white">
@@ -143,7 +143,7 @@ const DBCards = () => {
           </div>
         </div>
         {/* Total Services */}
-        <div className="">
+        {/* <div className="">
           <div className="flex items-center justify-between bg-[#219422] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
@@ -167,10 +167,10 @@ const DBCards = () => {
               <FontAwesomeIcon className="pl-2" icon={faArrowAltCircleRight} />{" "}
             </h2>
           </div>
-        </div>
+        </div> */}
 
         {/* Total Stafs */}
-        <div className="">
+        {/* <div className="">
           <div className="flex items-center justify-between bg-[#572194b9] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
@@ -194,11 +194,11 @@ const DBCards = () => {
               <FontAwesomeIcon className="pl-2" icon={faArrowAltCircleRight} />{" "}
             </h2>
           </div>
-        </div>
+        </div> */}
 
         {/* Total Orders */}
         <div className="">
-          <div className="flex items-center justify-between bg-[#4040f5] p-3 rounded-t-xl">
+          <div className="flex items-center h-40 justify-between bg-[#c6399b] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
                 {orders?.length}{" "}
@@ -214,7 +214,7 @@ const DBCards = () => {
           </div>
           <div
             onClick={() => navigate("/cpanel/morders")}
-            className="bg-[#2c2c9c] cursor-pointer py-2 text-center rounded-b-xl"
+            className="bg-[#9c2c7a] cursor-pointer py-2 text-center rounded-b-xl"
           >
             <h2 className="text-md text-white">
               More Info{" "}
@@ -225,7 +225,7 @@ const DBCards = () => {
 
         {/* Total Contacts */}
         <div className="">
-          <div className="flex items-center justify-between bg-[#ad5530] p-3 rounded-t-xl">
+          <div className="flex items-center h-40 justify-between bg-[#ad5530] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
                 {contacts?.length}{" "}
@@ -235,7 +235,7 @@ const DBCards = () => {
             <div className="">
               <FontAwesomeIcon
                 className="text-[#42424281] text-3xl md:text-4xl"
-                icon={faBookmark}
+                icon={faContactBook}
               />
             </div>
           </div>
