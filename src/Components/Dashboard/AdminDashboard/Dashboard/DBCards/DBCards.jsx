@@ -18,7 +18,7 @@ const DBCards = () => {
   const [orders, setOrders] = useState([]);
   const [services, setServices] = useState([]);
   const [stafs, setStafs] = useState([]);
-  const [bookings, setBookings] = useState([]);
+  const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/v1/users`, {
@@ -76,17 +76,16 @@ const DBCards = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/bookings`, {
+    fetch(`http://localhost:5000/api/v1/contacts`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
     })
       .then((res) => res.json())
-      .then((data) => setBookings(data?.data?.result));
+      .then((data) => setContacts(data?.data?.result));
   }, []);
 
-  console.log(stafs);
 
   return (
     <div className="">
@@ -224,14 +223,14 @@ const DBCards = () => {
           </div>
         </div>
 
-        {/* Total Booking */}
+        {/* Total Contacts */}
         <div className="">
           <div className="flex items-center justify-between bg-[#ad5530] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
-                {bookings?.length}{" "}
+                {contacts?.length}{" "}
               </h3>
-              <h3 className="text-md font-bold text-white">Total Bookings</h3>
+              <h3 className="text-md font-bold text-white">Total Contacts</h3>
             </div>
             <div className="">
               <FontAwesomeIcon
@@ -241,7 +240,7 @@ const DBCards = () => {
             </div>
           </div>
           <div
-            onClick={() => navigate("/cpanel/mbookings")}
+            onClick={() => navigate("/cpanel/mcontacts")}
             className="bg-[#8f4626] cursor-pointer py-2 text-center rounded-b-xl"
           >
             <h2 className="text-md text-white">

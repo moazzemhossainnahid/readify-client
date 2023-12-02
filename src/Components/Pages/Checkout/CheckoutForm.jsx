@@ -5,8 +5,19 @@ import auth from "../../../../firebase.init";
 
 const CheckoutForm = ({ item, setURLData, urlData }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [phone, setPhone] = useState();
+  const [address, setAddress] = useState();
   const [user] = useAuthState(auth);
 
+  const handlePhone = (e) => {
+    const data = e.target.value;
+    setPhone(data)
+  }
+
+  const handleAddress = (e) => {
+    const data = e.target.value;
+    setAddress(data)
+  }
 
   const handleChecked = (event) => {
     if (event.target.checked) {
@@ -29,16 +40,18 @@ const CheckoutForm = ({ item, setURLData, urlData }) => {
       total_amount: (item?.price + item?.price / 100 * 5 + item?.price / 100 * 3).toFixed(2),
       cus_name: user?.displayName,
       cus_email: user?.email,
+      cus_phone: phone,
+      cus_add1: address,
     };
 
     // console.log(info);
 
-      axios.post(`http://localhost:5000/api/v1/ssl/init`, info).then((res) => {
-        console.log(res.data);
-        if (res?.data) {
-          window.location = res?.data;
-        }
-      });
+    axios.post(`http://localhost:5000/api/v1/ssl/init`, info).then((res) => {
+      console.log(res.data);
+      if (res?.data) {
+        window.location = res?.data;
+      }
+    });
 
     // if (urlData?.data) {
     //   window.location.href = urlData?.data
@@ -57,7 +70,7 @@ const CheckoutForm = ({ item, setURLData, urlData }) => {
             <label className="relative cursor-pointer">
               <input
                 type="text"
-                defaultValue={user?.displayName}
+                value={user?.displayName}
                 placeholder="Input"
                 className="h-[50px] bg-[#f3f3f3] rounded w-full px-6 text-md border outline-none focus:border-gray-700 focus:border-opacity-60 placeholder-gray-300 placeholder-opacity-0 transition duration-200"
                 name="username"
@@ -71,43 +84,73 @@ const CheckoutForm = ({ item, setURLData, urlData }) => {
             <label className="relative cursor-pointer">
               <input
                 type="email"
-                defaultValue={user?.email}
+                value={user?.email}
                 placeholder="Input"
                 className="h-[50px]  bg-[#f3f3f3] w-full px-6 text-md border rounded outline-none focus:border-gray-700 focus:border-opacity-60 placeholder-gray-300 placeholder-opacity-0 transition duration-200"
                 name="email"
               />
               <span className=" text-sm bg-transparent te text-opacity-80 absolute left-2 px-2 top-[-27px] transition duration-200 input-text">
-                Email
+                User Email
               </span>
             </label>
           </div>
-          </div>
-          <div className="py-5">
-            <label className="relative cursor-pointer">
-              <input
-                type="text"
-                defaultValue={item?.name}
-                placeholder="Input"
-                className="h-[50px] bg-[#f3f3f3] w-full px-6 text-md border capitalize rounded outline-none focus:border-gray-700 focus:border-opacity-60 placeholder-gray-300 placeholder-opacity-0 transition duration-200"
-                name="name"
-              />
-              <span className=" text-sm bg-transparent te text-opacity-80 absolute left-2 px-2 top-[-27px] transition duration-200 input-text">
-                Item Name
-              </span>
-            </label>
-          </div>
-          <div className=" grid md:grid-cols-2 grid-cols-1 justify-items-stretch  gap-5  ">
+        </div>
+        <div className="py-5">
+          <label className="relative cursor-pointer">
+            <input
+              type="text"
+              onChange={handlePhone}
+              placeholder="Enter Your Phone Here"
+              required
+              className="h-[50px] bg-[#f3f3f3] w-full px-6 text-md border capitalize rounded outline-none focus:border-gray-700 focus:border-opacity-60 placeholder-gray-400 placeholder-opacity-100 transition duration-200"
+              name="phone"
+            />
+            <span className=" text-sm bg-transparent te text-opacity-80 absolute left-2 px-2 top-[-27px] transition duration-200 input-text">
+              Enter Your Phone
+            </span>
+          </label>
+        </div>
+        <div className="py-5">
+          <label className="relative cursor-pointer">
+            <input
+              type="text"
+              onChange={handleAddress}
+              placeholder="Enter Your Address Here"
+              required
+              className="h-[80px] bg-[#f3f3f3] w-full px-6 text-md border capitalize rounded outline-none focus:border-gray-700 focus:border-opacity-60 placeholder-gray-400 placeholder-opacity-100 transition duration-200"
+              name="address"
+            />
+            <span className=" text-sm bg-transparent te text-opacity-80 absolute left-2 px-2 top-[-42px] transition duration-200 input-text">
+              Enter Your Address
+            </span>
+          </label>
+        </div>
+        <div className="py-5">
+          <label className="relative cursor-pointer">
+            <input
+              type="text"
+              value={item?.name}
+              placeholder="Input"
+              className="h-[50px] bg-[#f3f3f3] w-full px-6 text-md border capitalize rounded outline-none focus:border-gray-700 focus:border-opacity-60 placeholder-gray-300 placeholder-opacity-0 transition duration-200"
+              name="name"
+            />
+            <span className=" text-sm bg-transparent te text-opacity-80 absolute left-2 px-2 top-[-27px] transition duration-200 input-text">
+              Book Name
+            </span>
+          </label>
+        </div>
+        <div className=" grid md:grid-cols-2 grid-cols-1 justify-items-stretch  gap-5  ">
           <div>
             <label className="relative cursor-pointer">
               <input
                 type="text"
-                defaultValue={item?.price}
+                value={item?.price}
                 placeholder="Input"
                 className="h-[50px]  bg-[#f3f3f3] w-full px-6 text-md border rounded outline-none focus:border-gray-700 focus:border-opacity-60 placeholder-gray-300 placeholder-opacity-0 transition duration-200"
                 name="price"
               />
               <span className=" text-sm bg-transparent te text-opacity-80 absolute left-2 px-2 top-[-27px] transition duration-200 input-text">
-                Item Price
+                Book Price
               </span>
             </label>
           </div>
@@ -115,13 +158,13 @@ const CheckoutForm = ({ item, setURLData, urlData }) => {
             <label className="relative cursor-pointer">
               <input
                 type="text"
-                defaultValue={item?.category}
+                value={item?.category}
                 placeholder="Input"
                 className="h-[50px]  bg-[#f3f3f3] w-full px-6 text-md border rounded outline-none focus:border-gray-700 focus:border-opacity-60 placeholder-gray-300 placeholder-opacity-0 transition duration-200"
                 name="category"
               />
               <span className=" text-sm bg-transparent te text-opacity-80 absolute left-2 px-2 top-[-27px] transition duration-200 input-text">
-                Item Category
+                Book Category
               </span>
             </label>
           </div>

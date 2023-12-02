@@ -32,8 +32,8 @@ export const SidebarData = [
         icon: faListCheck,
     },
     {
-        title: "Manage Bookings",
-        href: "mbookings",
+        title: "Manage Contacts",
+        href: "mcontacts",
         icon: faBookmark,
     },
 ];

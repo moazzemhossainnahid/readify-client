@@ -1,8 +1,8 @@
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 
-const ManageBookingsRow = ({ booking, index, setDeleteBooking }) => {
-  const { name, phone, email, service, address, message, createdAt } = booking;
+const ManageContactsRow = ({ contact, index, setDeleteContact }) => {
+  const { name, phone, email, address, message, createdAt } = contact;
   const options = {
     dateStyle: "short", // 'short' or 'long' based on your preference
   };
@@ -12,14 +12,11 @@ const ManageBookingsRow = ({ booking, index, setDeleteBooking }) => {
         <div className="space-y-3">
           <h3 class="text-gray-800 leading-4 font-semibold">Name: {name}</h3>
           <h3 class="text-gray-800 leading-4 font-semibold">
-            Service: {service}
+            Email: {email}
           </h3>
           <div className="space-y-2">
             <p className="">
               <span className="font-semibold">Phone:</span> {phone}
-            </p>
-            <p className="">
-              <span className="font-semibold">Email:</span> {email}
             </p>
             <p className="">
               <span className="font-semibold">Address:</span> {address}
@@ -35,15 +32,14 @@ const ManageBookingsRow = ({ booking, index, setDeleteBooking }) => {
               Date: {new Date(createdAt).toLocaleString(undefined, options)}
             </p>
             <label
-              htmlFor="delete-booking-modal"
-              onClick={() => setDeleteBooking(booking)}
+              htmlFor="delete-contact-modal"
+              onClick={() => setDeleteContact(contact)}
               class="w-8 h-8 rounded-full bg-gray-800 text-white flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-red-300 focus:ring-black"
               aria-label="edit note"
               role="button"
             >
               <FaTrashAlt />
             </label>
-            {/* <label htmlFor="delete-booking-modal" onClick={() => setDeleteBooking(booking)} className="btn text-white btn-secondary btn-xs">Delete Staf</label> */}
           </div>
         </div>
       </div>
@@ -51,4 +47,4 @@ const ManageBookingsRow = ({ booking, index, setDeleteBooking }) => {
   );
 };
 
-export default ManageBookingsRow;
+export default ManageContactsRow;
