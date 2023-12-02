@@ -1,13 +1,96 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLocationDot, faPhoneFlip } from '@fortawesome/free-solid-svg-icons';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 
 const ContactUS = () => {
-    return ( 
+    const { register, handleSubmit, reset } = useForm();
+
+    const handleContactForm = async (data) => {
+
+        const info = {
+            name: data.name,
+            phone: data.phone,
+            email: data.email,
+            address: data.address,
+            message: data.message,
+        };
+
+        // send to database
+        fetch(`http://localhost:5000/api/v1/contacts`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(info),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                //   console.log(data);
+                if (data?.status === "Successful") {
+                    toast.success("Data Add Successfully");
+                    reset();
+                } else {
+                    toast.error("Faild to Add Data");
+                }
+            });
+    };
+
+    return (
         <>
-            <div className="hero" style={{ backgroundImage: "url('https://i.ibb.co/mGQd6t3/contact-us-concept.jpg')", height: '480px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-                <div className="hero-content text-center font-thin">
+            <div className="hero relative" style={{ backgroundImage: "url('https://i.ibb.co/mGQd6t3/contact-us-concept.jpg')", height: '480px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                <div className="absolute top-7 left-5 z-10 hidden md:block">
+                    <form
+                        onSubmit={handleSubmit(handleContactForm)}
+                        action=""
+                        className="py-3"
+                    >
+                        <input
+                            {...register("name")}
+                            type="text"
+                            required
+                            placeholder="Enter Your Name"
+                            className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+                        />
+                        <input
+                            {...register("phone")}
+                            type="text"
+                            required
+                            placeholder="Enter Your Phone"
+                            className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+                        />
+                        <input
+                            {...register("email")}
+                            type="text"
+                            required
+                            placeholder="Enter Your Email"
+                            className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+                        />
+                        <input
+                            {...register("address")}
+                            type="text"
+                            required
+                            placeholder="Enter Your Address"
+                            className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+                        />
+                        <textarea
+                            {...register("message")}
+                            type="text"
+                            required
+                            placeholder="Enter Your Message"
+                            className="input bg-slate-100 my-2 h-20 input-ghost w-full block mx-auto max-w-xs"
+                        />
+                        <input
+                            className="btn px-7 btn-primary my-5 block mx-auto"
+                            type="submit"
+                            value="Send"
+                        />
+                    </form>
+                </div>
+                <div className="hero-content text-center font-thin relative">
                     <div className="max-w-md">
                         <h1 className="text-3xl md:text-5xl font-bold mb-2 text-slate-100">Feel Free to
                         </h1>
