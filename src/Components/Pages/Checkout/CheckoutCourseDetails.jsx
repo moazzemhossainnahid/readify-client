@@ -4,7 +4,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { faBangladeshiTakaSign } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const CheckoutitemDetails = ({ item }) => {  
+const CheckoutitemDetails = ({ item, myOrders }) => {
 
   const months = [
     "January",
@@ -77,30 +77,42 @@ const CheckoutitemDetails = ({ item }) => {
             <div className="flex justify-between text-lg text-black text-opacity-90  my-2">
               <p>Item Fee</p>
               <p>
-              <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {item?.price}
+                <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {item?.price}
               </p>
             </div>
             <div className="flex justify-between text-lg text-black text-opacity-90  my-2">
               <p>Govt.Tax 5%</p>
               <p>
-              <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {(item?.price/100*5).toFixed(2)}
+                <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {(item?.price / 100 * 5).toFixed(2)}
               </p>
             </div>
             <div className="flex justify-between text-lg text-black text-opacity-90  my-2">
               <p>Service Charge 3%</p>
               <p>
-              <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {(item?.price/100*3).toFixed(2)}
+                <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {(item?.price / 100 * 3).toFixed(2)}
               </p>
             </div>
             <div className="py-5">
               <hr />
             </div>
-            <div className="flex justify-between text-lg text-black text-opacity-90  my-2 mb-10">
+            <div className="flex justify-between text-lg text-black text-opacity-90 my-2">
               <p className="text-xl font-semibold ">Total</p>
               <p className="text-xl font-semibold ">
-                = <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {(item?.price + item?.price/100*5 + item?.price/100*3).toFixed(2)}
+                <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {(item?.price + item?.price / 100 * 5 + item?.price / 100 * 3).toFixed(2)}
               </p>
             </div>
+            {myOrders?.length > 0 && <div className="flex justify-between text-lg text-black text-opacity-90  my-2">
+              <p>Get Discount 15%</p>
+              <p className=" border-b border-black">
+                <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {(item?.price / 100 * 15).toFixed(2)}
+              </p>
+            </div>}
+            {myOrders?.length > 0 && <div className="flex justify-between text-lg text-black text-opacity-90  my-2 mb-10">
+              <p className="text-xl font-semibold ">Grand Total</p>
+              <p className="text-xl font-semibold ">
+                = <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {((item?.price + item?.price / 100 * 5 + item?.price / 100 * 3) - (item?.price / 100 * 15) ).toFixed(2)}
+              </p>
+            </div>}
           </div>
         </div>
       </div>

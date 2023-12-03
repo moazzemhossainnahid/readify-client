@@ -16,16 +16,6 @@ export const SidebarData = [
         href: "mbooks",
         icon: faBook,
     },
-    // {
-    //     title: "Manage Services",
-    //     href: "mservices",
-    //     icon: faBraille,
-    // },
-    // {
-    //     title: "Manage Stafs",
-    //     href: "mstafs",
-    //     icon: faBookAtlas,
-    // },
     {
         title: "Manage Orders",
         href: "morders",

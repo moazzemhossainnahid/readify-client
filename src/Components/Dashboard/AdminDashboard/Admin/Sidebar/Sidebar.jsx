@@ -23,8 +23,8 @@ const Sidebar = () => {
       <div className={` ${open ? "w-72 h-full min-h-screen" : "w-20 h-full min-h-screen"} bg-[#EBEFEE] sticky p-5 duration-300`} >
         <img src="https://i.ibb.co/CB1yQwj/kuba-arrow-button-set-2.png" className={`absolute cursor-pointer -right-3 top-9 w-9 border-dark-purple border-2 rounded-full  ${!open && "rotate-180"}`} onClick={handleOpenBar} alt="" />
         <div className="flex flex-col gap-x-4 items-center">
-          {/* <img src="https://i.ibb.co/8NNvYfT/emotion.png" alt="logo" className={`cursor-pointer w-2/3 pb-5 mx-auto opacity-0 duration-500 ${open && " w-2/3 rotate-[360deg] opacity-100"}`} /> */}
-          <h3 className={`cursor-pointer w-full text-2xl font-bold text-rose-600 mx-auto opacity-0 duration-500 ${open && " w-2/3 rotate-[360deg] opacity-100"}`} >Readify</h3> <br />
+          <img src="https://i.ibb.co/nn1pDMg/Readify.png" alt="logo" className={`cursor-pointer w-2/3 pb-5 mx-auto opacity-0 duration-500 ${open && " w-2/3 rotate-[360deg] opacity-100"}`} />
+          {/* <h3 className={`cursor-pointer w-full text-2xl font-bold text-rose-600 mx-auto opacity-0 duration-500 ${open && " w-2/3 rotate-[360deg] opacity-100"}`} >Readify</h3> <br /> */}
           {open && <span className="text-gray-100 px-4 py-1 text-sm border rounded badge badge-neutral">{profile?.role}</span>}
         </div>
         <ul className="pt-6">

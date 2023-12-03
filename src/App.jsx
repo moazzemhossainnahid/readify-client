@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import './App.css'
 import Home from './Pages/Home/Home'
-import Cart from './Pages/Cart/Cart'
 import RequireAuth from './Components/Others/RequireAuth/RequireAuth'
 import Signin from './Pages/Auth/Signin/Signin'
 import Signup from './Pages/Auth/Signup/Signup'
@@ -16,10 +15,7 @@ import RequireAdmin from './Components/Others/RequireAdmin/RequireAdmin'
 import Header from './Pages/Shared/Header/Header'
 import Footer from './Pages/Shared/Footer/Footer'
 import Books from './Pages/Books/Books'
-import Stafs from './Pages/Stafs/Stafs'
 import ManageBooks from './Components/Dashboard/AdminDashboard/ManageParts/ManageBooks'
-import ManageServices from './Components/Dashboard/AdminDashboard/ManageServices/ManageServices'
-import ManageStafs from './Components/Dashboard/AdminDashboard/ManageStafs/ManageStafs'
 import SingleBooksDetails from './Components/Pages/Parts/SingleBooksDetails'
 import Success from './Components/Others/Success/Success'
 import Checkout from './Components/Pages/Checkout/Checkout'
@@ -41,8 +37,6 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/books' element={<Books />} />
             <Route path='/books/:id' element={<RequireAuth><SingleBooksDetails /></RequireAuth>} />
-            <Route path='/stafs' element={<Stafs />} />
-            <Route path='/cart' element={<RequireAuth><Cart /></RequireAuth>} />
             <Route path='/checkout/:id' element={<RequireAuth><Checkout /></RequireAuth>} />
             <Route path="/ssl-payment-success" element={<RequireAuth><Success/></RequireAuth>} />
             <Route path='/aboutus' element={<AboutUS />} />
@@ -60,9 +54,7 @@ function App() {
               <Route path="addashboard" element={<AdDashboard />} />
               <Route path="musers" element={<ManageUsers />} />
               <Route path="mbooks" element={<ManageBooks />} />
-              <Route path="mservices" element={<ManageServices />} />
               <Route path="morders" element={<ManageOrders />} />
-              <Route path="mstafs" element={<ManageStafs />} />
               <Route path="mcontacts" element={<ManageContacts />} />
             </Route>
           </Routes>
