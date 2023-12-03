@@ -1,11 +1,13 @@
 import React from 'react';
+import { FaRegStar, FaStar } from 'react-icons/fa';
+import Rating from 'react-rating';
 
 const AllReviewsCard = ({ review }) => {
 
   const data = review && review?.review;
 
   return (
-    <div className="w-full h-fit border rounded-md mt-6 mb-12 mx-auto px-5 pt-10 pb-5 relative">
+    <div className="w-full h-fit border rounded-md mt-6 mx-auto px-5 pt-10 pb-5 relative">
       <div className="w-10 h-10  absolute -top-5 left-8 rounded-full bg-violet-200  flex items-center justify-center ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -34,13 +36,24 @@ const AllReviewsCard = ({ review }) => {
       </div>
       <div className="w-full h-full">
         <img src={data?.image} alt="" className="w-12 h-12 rounded-full mx-auto" />
-        <div className="pt-5">
+        <div className="pt-5 space-y-3">
           <p className=''>
             {data?.review}
           </p>
-          <p className="font-medium">{data?.rating}</p>
+          <div className="flex items-center justify-center gap-2">
+            <Rating
+              emptySymbol={<FaRegStar className="text-yellow-400" />}
+              fullSymbol={<FaStar className="text-yellow-400" />}
+              fractions={2}
+              initialRating={data?.rating}
+              readonly
+            />
+            <p className="text-sm text-gray-500">
+              ({data?.rating})
+            </p>
+          </div>
         </div>
-        <div className="mt-7">
+        <div className="mt-5">
           <p className="font-medium">{data?.name}</p>
           <p className="text-sm text-gray-500">{data?.email}</p>
         </div>

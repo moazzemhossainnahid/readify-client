@@ -13,12 +13,12 @@ const OurReviews = () => {
         <div className="w-[70px] mx-auto h-[3px] bg-[#1584f3] mb-10 relative ">
           <div className="radiant bg-[#FFFFFF]"></div>
         </div>
-        <div className="w-full py-5 p5 md:px-10">
+        <div className="w-full p5 md:px-10">
 
             <AllReviews/>
         </div>
       </div>
-      <button onClick={() => navigate('/reviews')} className="btn btn-outline btn-danger">See More Reviews</button>
+      {/* <button onClick={() => navigate('/reviews')} className="btn btn-outline btn-danger">See More Reviews</button> */}
     </div>
   );
 };
