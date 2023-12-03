@@ -1,16 +1,21 @@
 
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
 import AllReviewsCard from "./AllReviewsCard";
 import 'swiper/swiper-bundle.css';
+// import required modules
+import { Autoplay, Pagination } from "swiper/modules";
 import useReviews from "../../../Hooks/useReviews";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
 
 
 const AllReviews = () => {
   const [reviews] = useReviews();
 
-  console.log(reviews);
+  // console.log(reviews);
   return (
     <div className="max-width py-10 w-full">
       <div className="h-full w-full flex justify-center items-center gap-5 overflow-x-auto mt-10 md:mt-0">
@@ -33,12 +38,18 @@ const AllReviews = () => {
               slidesPerView: 3,
             },
           }}
+          loop={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
           slidesPerView={1}
           spaceBetween={30}
           pagination={{
             clickable: true,
           }}
-          modules={[Pagination]}
+          grabCursor={true}
+          modules={[Autoplay]}
           className="w-fit h-full flex justify-center items-center "
         >
 
