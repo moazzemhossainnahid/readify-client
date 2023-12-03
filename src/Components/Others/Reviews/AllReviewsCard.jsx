@@ -37,8 +37,8 @@ const AllReviewsCard = ({ review }) => {
       <div className="w-full h-full">
         <img src={data?.image} alt="" className="w-12 h-12 rounded-full mx-auto" />
         <div className="pt-5 space-y-3">
-          <p className=''>
-            {data?.review}
+          <p className='h-28'>
+            {data?.review?.slice(0,150)}
           </p>
           <div className="flex items-center justify-center gap-2">
             <Rating
