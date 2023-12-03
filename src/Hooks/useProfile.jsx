@@ -8,7 +8,7 @@ const useProfile = () => {
     const email = user?.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/v1/users/${email}`, {
+        fetch(`https://readify-server-five.vercel.app/api/v1/users/${email}`, {
             method: "GET",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,

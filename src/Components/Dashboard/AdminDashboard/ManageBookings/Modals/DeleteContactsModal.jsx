@@ -6,7 +6,7 @@ const DeleteContactsModal = ({ deleteContact, setNumber, number }) => {
     console.log(deleteContact);
 
     const handleDelete = (id) => {
-        const url = `http://localhost:5000/api/v1/contacts/${id}`;
+        const url = `https://readify-server-five.vercel.app/api/v1/contacts/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

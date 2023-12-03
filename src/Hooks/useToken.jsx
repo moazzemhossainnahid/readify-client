@@ -17,7 +17,7 @@ const UseToken = (user) => {
 
 
         if (email) {
-            fetch(`http://localhost:5000/api/v1/users/${email}`, {
+            fetch(`https://readify-server-five.vercel.app/api/v1/users/${email}`, {
                 method: 'PUT',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(currentUser)

@@ -7,7 +7,7 @@ const DeleteBooksModal = ({ deleteBook, setNumber, number }) => {
 
 
     const handleDelete = (id) => {
-        const url = `http://localhost:5000/api/v1/books/${id}`;
+        const url = `https://readify-server-five.vercel.app/api/v1/books/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

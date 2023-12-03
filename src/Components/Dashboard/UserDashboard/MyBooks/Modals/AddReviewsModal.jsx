@@ -25,7 +25,7 @@ const AddReviewsModal = ({ addReview, setNumber, number }) => {
         };
 
         // send to database
-        fetch(`http://localhost:5000/api/v1/orders/${_id}`, {
+        fetch(`https://readify-server-five.vercel.app/api/v1/orders/${_id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",

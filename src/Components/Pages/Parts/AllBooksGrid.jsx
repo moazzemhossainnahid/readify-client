@@ -24,7 +24,7 @@ const AllBooksGrid = ({ book }) => {
 
     // console.log(info);
 
-    axios.post(`http://localhost:5000/api/v1/ssl/init`, info).then((res) => {
+    axios.post(`https://readify-server-five.vercel.app/api/v1/ssl/init`, info).then((res) => {
       console.log(res.data);
       if (res?.data) {
         window.location = res?.data;

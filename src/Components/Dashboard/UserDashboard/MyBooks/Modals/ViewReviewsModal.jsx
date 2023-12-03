@@ -14,7 +14,7 @@ const ViewReviewsModal = ({ viewReview }) => {
 
 
     const handleDelete = () => {
-        const url = `http://localhost:5000/api/v1/orders/${id}/review`;
+        const url = `https://readify-server-five.vercel.app/api/v1/orders/${id}/review`;
         fetch(url, {
             method: 'DELETE',
             headers: {

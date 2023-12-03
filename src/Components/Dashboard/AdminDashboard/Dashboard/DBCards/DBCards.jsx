@@ -17,7 +17,7 @@ const DBCards = () => {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/users`, {
+    fetch(`https://readify-server-five.vercel.app/api/v1/users`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -28,7 +28,7 @@ const DBCards = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/books`, {
+    fetch(`https://readify-server-five.vercel.app/api/v1/books`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -40,7 +40,7 @@ const DBCards = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/orders`, {
+    fetch(`https://readify-server-five.vercel.app/api/v1/orders`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -51,7 +51,7 @@ const DBCards = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/contacts`, {
+    fetch(`https://readify-server-five.vercel.app/api/v1/contacts`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

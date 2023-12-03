@@ -19,7 +19,7 @@ const ContactUS = () => {
         };
 
         // send to database
-        fetch(`http://localhost:5000/api/v1/contacts`, {
+        fetch(`https://readify-server-five.vercel.app/api/v1/contacts`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

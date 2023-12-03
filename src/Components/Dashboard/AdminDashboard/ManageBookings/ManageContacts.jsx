@@ -9,7 +9,7 @@ const ManageContacts = () => {
   const [allContacts, setAllContacts] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/contacts")
+    fetch("https://readify-server-five.vercel.app/api/v1/contacts")
       .then((res) => res.json())
       .then((data) => setContacts(data?.data));
   }, [number]);

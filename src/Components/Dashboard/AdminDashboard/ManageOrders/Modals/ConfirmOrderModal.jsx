@@ -20,7 +20,7 @@ const ConfirmOrderModal = ({ confirmOrder, setNumber, number }) => {
   console.log(confirmOrder);
 
   const handleConfirmOrder = (id) => {
-    const url = `http://localhost:5000/api/v1/orders/${id}`;
+    const url = `https://readify-server-five.vercel.app/api/v1/orders/${id}`;
     fetch(url, {
       method: "PUT",
     })
