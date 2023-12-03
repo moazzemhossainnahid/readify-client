@@ -15,20 +15,19 @@ import ManageUsers from './Components/Dashboard/AdminDashboard/ManageUsers/Manag
 import RequireAdmin from './Components/Others/RequireAdmin/RequireAdmin'
 import Header from './Pages/Shared/Header/Header'
 import Footer from './Pages/Shared/Footer/Footer'
-import AutoParts from './Pages/AutoParts/AutoParts'
-import Services from './Pages/Services/Services'
+import Books from './Pages/Books/Books'
 import Stafs from './Pages/Stafs/Stafs'
 import ManageBooks from './Components/Dashboard/AdminDashboard/ManageParts/ManageBooks'
 import ManageServices from './Components/Dashboard/AdminDashboard/ManageServices/ManageServices'
 import ManageStafs from './Components/Dashboard/AdminDashboard/ManageStafs/ManageStafs'
 import SingleBooksDetails from './Components/Pages/Parts/SingleBooksDetails'
-import SingleServicesDetails from './Components/Pages/Services/SingleServicesDetails'
 import Success from './Components/Others/Success/Success'
 import Checkout from './Components/Pages/Checkout/Checkout'
 import ManageContacts from './Components/Dashboard/AdminDashboard/ManageBookings/ManageContacts'
 import ManageOrders from './Components/Dashboard/AdminDashboard/ManageOrders/ManageOrders'
 import ContactUS from './Pages/ContactUS/ContactUS'
 import AboutUS from './Pages/AboutUS/AboutUS'
+import MyBooks from './Components/Dashboard/UserDashboard/MyBooks/MyBooks'
 
 function App() {
 
@@ -40,10 +39,8 @@ function App() {
         <div className="">
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/books' element={<AutoParts />} />
+            <Route path='/books' element={<Books />} />
             <Route path='/books/:id' element={<RequireAuth><SingleBooksDetails /></RequireAuth>} />
-            <Route path='/services' element={<Services />} />
-            <Route path='/services/:id' element={<RequireAuth><SingleServicesDetails /></RequireAuth>} />
             <Route path='/stafs' element={<Stafs />} />
             <Route path='/cart' element={<RequireAuth><Cart /></RequireAuth>} />
             <Route path='/checkout/:id' element={<RequireAuth><Checkout /></RequireAuth>} />
@@ -52,7 +49,8 @@ function App() {
             <Route path='/contactus' element={<ContactUS />} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/signup' element={<Signup />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/profile' element={<RequireAuth><Profile /></RequireAuth>} />
+            <Route path="/mybooks" element={<RequireAuth><MyBooks /></RequireAuth>} />
             <Route path='*' element={<NotFound />} />
 
 

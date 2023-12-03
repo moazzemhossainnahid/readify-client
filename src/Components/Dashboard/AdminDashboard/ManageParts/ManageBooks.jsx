@@ -162,7 +162,7 @@ const ManageBooks = () => {
         )}
       </div>
 
-      {/* <!-- The add Parts modal --> */}
+      {/* <!-- The add Books modal --> */}
 
       <input type="checkbox" id="addBooks" class="modal-toggle" />
       <div class="modal">

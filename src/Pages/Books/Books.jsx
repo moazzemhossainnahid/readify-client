@@ -1,7 +1,7 @@
 import React from "react";
 import AllBooks from "../../Components/Pages/Parts/AllBooks";
 
-const AutoParts = () => {
+const Books = () => {
   return (
     <div className="w-full">
       <AllBooks />
@@ -9,4 +9,4 @@ const AutoParts = () => {
   );
 };
 
-export default AutoParts;
+export default Books;

@@ -3,7 +3,7 @@ import HomeBanner from '../../Components/Pages/Home/HomeBanner';
 import Newsletter from '../../Components/Pages/Home/Newsletter';
 import AboutOurCompany from '../../Components/Pages/Home/AboutOurCompany';
 import BooksThree from '../../Components/Pages/Home/BooksThree';
-import ServiceThree from '../../Components/Pages/Home/ServiceThree';
+import OurReviews from '../../Components/Pages/Home/OurReviews';
 import HomeTopCarousel from '../../Components/Pages/Home/HomeTopCarousel';
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
             <HomeTopCarousel/>
             <HomeBanner/>
             <BooksThree/>
-            <ServiceThree/>
+            <OurReviews/>
             <AboutOurCompany/>
             <Newsletter/>
         </div>

@@ -47,7 +47,7 @@ const Authentication = () => {
                         {
                             (user && admin) && <li> <NavLink reloadDocument className={({ isActive }) => (isActive ? 'text-[#0f52ba] duration-300 border-b-2 border-[#0f52ba]' : 'text-gray-800 duration-100 text-sm')} to="/cpanel">Control Panel</NavLink></li>
                         }
-                        <li><Link className=' text-sm' to="/mypost">My Post</Link></li>
+                        <li><Link className=' text-sm' to="/mybooks">My Books</Link></li>
                         <li><button onClick={handleSignOut}>Sign Out</button></li>
                     </ul>
                 </div>
