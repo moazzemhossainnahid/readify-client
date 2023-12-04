@@ -6,17 +6,17 @@ const Newsletter = () => {
       <div className="2xl:mx-auto 2xl:container mx-4 py-16">
         <div className=" w-full  relative flex items-center justify-center">
           <img
-            src="https://i.ibb.co/4sYZ8gC/img-2.png"
+            src="https://images5.alphacoders.com/417/thumbbig-417096.webp"
             alt="dining"
             className="w-full h-full absolute z-0 hidden xl:block"
           />
           <img
-            src="https://i.ibb.co/bbS3J9C/pexels-max-vakhtbovych-6301182-1.png"
+            src="https://images7.alphacoders.com/529/thumbbig-529334.webp"
             alt="dining"
             className="w-full h-full absolute z-0 hidden sm:block xl:hidden"
           />
           <img
-            src="https://i.ibb.co/JKkzGDs/pexels-max-vakhtbovych-6301182-1.png"
+            src="https://images6.alphacoders.com/310/thumbbig-310018.webp"
             alt="dining"
             className="w-full h-full absolute z-0  sm:hidden "
           />

@@ -6,8 +6,8 @@ const HomeBanner = () => {
         <div className='w-full'>
             <div className="2xl:mx-auto 2xl:container">
                 <div className="relative rounded-md">
-                    <img src="https://i.ibb.co/SBpL1cK/pexels-aleksandar-pasaric-325185-1.png" alt="city view" className="w-full h-full rounded-md  object-center object-fill absolute sm:block hidden" />
-                    <img src="https://i.ibb.co/LQpxBsc/mobile.png" alt="city view" className="w-full h-full rounded-md absolute object-center object-fill sm:hidden" />
+                    <img src="https://images6.alphacoders.com/408/thumbbig-408916.webp" alt="city view" className="w-full h-full rounded-md  object-center object-fill absolute sm:block hidden" />
+                    <img src="https://images4.alphacoders.com/130/thumbbig-1305884.webp" alt="city view" className="w-full h-full rounded-md absolute object-center object-fill sm:hidden" />
                     <div className="text-xl relative bg-gradient-to-r from-blue-700 to-transparent w-full h-full z-40 top-0 md:p-16 p-6 flex flex-col justify-between rounded-md ">
                         <div className='w-full mx-auto justify-center'>
                             <h1 className="md:text-5xl mx-auto text-3xl font-bold md:leading-10 leading-9 text-white sm:w-auto w-64">Act Before It’s Too Late!</h1>

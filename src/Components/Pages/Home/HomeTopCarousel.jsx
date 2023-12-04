@@ -35,29 +35,29 @@ const HomeTopCarousel = () => {
 
   const SliderData = [
     {
-      img: "https://i.ibb.co/DMfRscC/depositphotos-103091708-stock-photo-auto-parts-on-concrete-wall.webp",
-      title:"Quality Auto Parts for Every Need",
-      desc:"Discover a comprehensive range of top-notch auto parts and accessories designed to keep your vehicle running smoothly.Our collection includes everything from essential engine components to stylish accessories, ensuring your car performs at its best while reflecting your personal style."
+      img: "https://images7.alphacoders.com/133/thumbbig-1338193.webp",
+      title:"Literary Haven",
+      desc:"Discover a world of captivating stories at Literary Haven, your premier online book store. Immerse yourself in a diverse collection of genres and find your next literary adventure with ease."
     },
     {
-      img: "https://i.ibb.co/9t6Qv6V/desktop-wallpaper-car-parts-auto-parts.jpg",
-      title:"Unleash Your Car's Potential with Premium Auto Parts",
-      desc:"Explore a world of possibilities for your vehicle with our premium selection of auto parts. From performance-enhancing upgrades to reliable replacements, our products are engineered to meet the highest standards of quality and durability, empowering you to unleash your car's true potential on the road."
+      img: "https://images5.alphacoders.com/133/thumbbig-1338186.webp",
+      title:"Pages Unbound",
+      desc:"Unleash the power of words at Pages Unbound, the ultimate online book destination. Explore a curated selection of books that span every genre, ensuring there's something for every book lover."
     },
     {
-      img: "https://i.ibb.co/Gn5F065/istockphoto-478107962-612x612.jpg",
-      title:"Elevate Your Driving Experience with Top-Grade Auto Parts",
-      desc:"Elevate every drive with our top-grade auto parts and accessories. Whether you're a car enthusiast seeking performance boosts or a practical driver in need of reliable replacements, our diverse range of products ensures that your vehicle operates flawlessly while reflecting your individual style."
+      img: "https://images.alphacoders.com/132/thumbbig-1326370.webp",
+      title:"E-Read Escapade",
+      desc:"Embark on an e-reading escapade with our vast collection of digital books. From gripping novels to insightful non-fiction, E-Read Escapade is your go-to online book store for literary exploration."
     },
     {
-      img: "https://i.ibb.co/jvSPp2N/car-parts-car-parts-red-wallpaper-preview.jpg",
-      title:"Revitalize Your Car with High-Quality Auto Parts",
-      desc:"Revitalize your car's performance and appearance with our high-quality auto parts. From essential components to eye-catching accessories, we offer a carefully curated selection that caters to both your vehicle's needs and your personal preferences, ensuring an enhanced driving experience every time."
+      img: "https://images5.alphacoders.com/132/thumbbig-1326363.webp",
+      title:"Novel Nook",
+      desc:"Dive into the enchanting world of novels at Novel Nook, your virtual sanctuary for book enthusiasts. Browse through a carefully curated selection and let the magic of storytelling transport you to new realms"
     },
     {
-      img: "https://i.ibb.co/Yh9LvnN/How-Auto-Parts-Stores-Create-Their-Database-1024x584.webp",
-      title:"Your Trusted Source for Auto Parts and Beyond",
-      desc:"Look no further for all your auto parts needs. Our extensive catalog features a wide array of products, each chosen for its quality and performance. Trust us to provide not only the parts you require but also the expertise and guidance to make informed choices for your vehicle's maintenance and enhancement."
+      img: "https://images8.alphacoders.com/424/thumbbig-424848.webp",
+      title:"Digital Bookshelf",
+      desc:"Transform your reading experience with Digital Bookshelf, the online haven for bookworms. Explore a virtual library stocked with e-books and discover a convenient and delightful way to indulge in your literary passions."
     },
   ];
 
