@@ -1,37 +1,11 @@
 import axios from "axios";
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import auth from "../../../../firebase.init";
+import TimeAgo from "../../Others/TimeAgo/TimeAgo";
 
 
 const AllBooksGrid = ({ book }) => {
   const navigate = useNavigate();
-  const [user] = useAuthState(auth);
-
-  const confirmToPay = (event) => {
-    event.preventDefault();
-
-    const info = {
-      item_name: book?.name,
-      item_desc: book?.description,
-      item_category: book?.category,
-      item_image: book?.image,
-      total_amount: book?.price,
-      cus_name: user?.displayName,
-      cus_email: user?.email,
-    };
-
-    // console.log(info);
-
-    axios.post(`https://readify-server-five.vercel.app/api/v1/ssl/init`, info).then((res) => {
-      console.log(res.data);
-      if (res?.data) {
-        window.location = res?.data;
-      }
-    });
-
-  };
 
   return (
     <div onClick={() => navigate(`/books/${book?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
@@ -75,7 +49,7 @@ const AllBooksGrid = ({ book }) => {
             </div>
             <div className="flex justify-between items-center pt-5">
               <p className="text-xs text-gray-600">Stock:{book?.stock}</p>
-              <p className="text-xs text-gray-600 pl-5">4 days ago</p>
+              <p className="text-xs text-gray-600 pl-5"><TimeAgo createdAt={book?.createdAt} /></p>
             </div>
             <p className="text-xs text-gray-600 mt-2">
               {book?.description.slice(0, 150)}
