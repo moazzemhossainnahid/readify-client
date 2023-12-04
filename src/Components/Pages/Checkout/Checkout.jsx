@@ -22,9 +22,11 @@ const Checkout = () => {
             .then(data => setOrders(data?.data?.result))
     }, [])
 
-    const myOrders = orders && orders?.filter(o => o?.cus_email === user?.email && o?.paymentStatus === "paid");
+    const myAllOrders = orders && orders?.filter(o => o?.cus_email === user?.email && o?.paymentStatus === "paid");
 
-//  console.log("myOrders",myOrders);
+    const myOrders = myAllOrders && myAllOrders?.filter(o => o?.review);
+
+    console.log("myOrders", myOrders);
 
     return (
         <div className='bg-white'>
@@ -34,7 +36,7 @@ const Checkout = () => {
                 </h2>
             </div>
             <div className="md:container sm:px-2 mx-auto grid md:grid-cols-3 py-5 gap-5">
-                <CheckoutForm myOrders={myOrders}  item={Item} setURLData={setURLData} urlData={urlData} />
+                <CheckoutForm myOrders={myOrders} item={Item} setURLData={setURLData} urlData={urlData} />
                 <CheckoutCourseDetails myOrders={myOrders} item={Item} />
             </div>
         </div>
