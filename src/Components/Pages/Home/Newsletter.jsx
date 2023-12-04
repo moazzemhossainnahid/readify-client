@@ -29,7 +29,7 @@ const Newsletter = () => {
               is sent once in <br />a week on every friday so subscribe to get
               latest news and updates.
             </p>
-            <div className="sm:border border-white flex-col sm:flex-row  flex items-center lg:w-5/12 w-full mt-12 space-y-4 sm:space-y-0">
+            <div className="sm:border rounded border-white flex-col sm:flex-row  flex items-center lg:w-5/12 w-full mt-12 space-y-4 sm:space-y-0">
               <input
                 className="border border-white sm:border-transparent text-base w-full font-medium leading-none text-white p-4 focus:outline-none bg-transparent placeholder-white"
                 placeholder="Email Address"

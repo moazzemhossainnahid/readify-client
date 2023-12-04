@@ -5,7 +5,7 @@ import './clock.css';
 
 const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']; 
 
-export const Clock = ({h24=true}) => {
+export const Clock = ({h24=false}) => {
  
     const [hour  , setHour  ] = useState(0);
     const [minute, setMinute] = useState(0);
