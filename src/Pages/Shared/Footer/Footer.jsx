@@ -5,9 +5,9 @@ import { Clock } from '../../../Components/Others/Clock/Clock';
 const Footer = () => {
   const navigate = useNavigate();
   return (
-    <div className=''>
+    <div className='bg-[url(https://images8.alphacoders.com/411/thumbbig-411522.webp)] bg-cover bg-center'>
 
-      <div className="bg-black text-white w-4/4 m-0 py-10">
+      <div className="bg-black opacity-80 text-white w-4/4 m-0 py-10">
         <footer className="text-center lg:text-left bg-black text-white">
           <div className="flex justify-center items-center bg-black text-white lg:justify-between p-6 border-b border-gray-300">
             <div className="mr-12 hidden lg:block">
