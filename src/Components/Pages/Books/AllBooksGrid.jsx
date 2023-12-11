@@ -9,7 +9,7 @@ const AllBooksGrid = ({ book }) => {
 
   return (
     <div onClick={() => navigate(`/books/${book?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
-      <div className="mx-2 lg:mb-0 mb-8">
+      <div className=" mb-8 md:mb-0">
         <div className="h-60">
           <img src={book?.image} className="w-full h-60" />
         </div>
@@ -52,7 +52,7 @@ const AllBooksGrid = ({ book }) => {
               <p className="text-xs text-gray-600 pl-5"><TimeAgo createdAt={book?.createdAt} /></p>
             </div>
             <p className="text-xs text-gray-600 mt-2">
-              {book?.description.slice(0, 120)}
+              {book?.description.slice(0, 130)}
             </p>
             <div className="flex justify-between items-center mt-4">
               <div>
