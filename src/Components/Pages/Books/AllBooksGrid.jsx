@@ -52,7 +52,7 @@ const AllBooksGrid = ({ book }) => {
               <p className="text-xs text-gray-600 pl-5"><TimeAgo createdAt={book?.createdAt} /></p>
             </div>
             <p className="text-xs text-gray-600 mt-2">
-              {book?.description.slice(0, 150)}
+              {book?.description.slice(0, 120)}
             </p>
             <div className="flex justify-between items-center mt-4">
               <div>

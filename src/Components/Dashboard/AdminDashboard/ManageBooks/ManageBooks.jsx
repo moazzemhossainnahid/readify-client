@@ -70,6 +70,7 @@ const ManageBooks = () => {
                 toast.success("Book Add Successfully");
                 reset();
                 setNumber(number + 1);
+                window.location.reload();
               } else {
                 toast.error("Faild to Add Book");
               }
