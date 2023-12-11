@@ -2,6 +2,7 @@ import React from "react";
 import useBooks from "../../../Hooks/useBooks";
 import AllBooksGrid from "./AllBooksGrid";
 import EmptyList from "../../Others/EmptyList/EmptyList";
+import Loading from "../../Others/Loading/Loading";
 
 const AllBooks = () => {
   const [books] = useBooks();
@@ -13,15 +14,13 @@ const AllBooks = () => {
         All Of Our Books
       </h1>
 
-      {books ? (
+      {books && books?.length > 0 ?
         <div className="w-full md:w-5/6 mx-auto p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center">
           {books?.map((book) => (
             <AllBooksGrid book={book} key={book?._id} />
           ))}
-        </div>
-      ) : (
-        <EmptyList />
-      )}
+        </div> : <Loading />
+      }
     </div>
   );
 };

@@ -10,6 +10,7 @@ import useReviews from "../../../Hooks/useReviews";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import Loading from "../Loading/Loading";
 
 
 const AllReviews = () => {
@@ -19,7 +20,7 @@ const AllReviews = () => {
   return (
     <div className="max-width py-10 w-full">
       <div className="h-full w-full flex justify-center items-center gap-5 overflow-x-auto mt-10 md:mt-0">
-        <Swiper
+{reviews && reviews?.length > 0 ?         <Swiper
           breakpoints={{
             380: {
               width: 380,
@@ -62,7 +63,7 @@ const AllReviews = () => {
               </div>
             ))
           }
-        </Swiper>
+        </Swiper> : <Loading/>}
       </div>
     </div>
   );

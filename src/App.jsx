@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <div className="App pt-20">
-        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mbooks' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf' && window.location.pathname !== '/cpanel/mcontacts' && window.location.pathname !== '/cpanel/morders') && <Header />}
+        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mbooks' && window.location.pathname !== '/cpanel/mcontacts' && window.location.pathname !== '/cpanel/morders') && <Header />}
         {/* <Header /> */}
         <div className="">
           <Routes>
@@ -59,7 +59,7 @@ function App() {
             </Route>
           </Routes>
         </div>
-        {(window.location.pathname !== '/cart' && window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mbooks' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf' && window.location.pathname !== '/cpanel/mcontacts' && window.location.pathname !== '/cpanel/morders') && <Footer />}
+        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mbooks' && window.location.pathname !== '/cpanel/mcontacts' && window.location.pathname !== '/cpanel/morders') && <Footer />}
         <ToastContainer />
       </div>
     </>

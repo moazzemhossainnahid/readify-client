@@ -1,9 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import AllReviews from "../../Others/Reviews/AllReviews";
 
 const OurReviews = () => {
-  const navigate = useNavigate();
   return (
     <div className="w-full">
       <div className="py-10">
