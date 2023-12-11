@@ -117,7 +117,7 @@ const ManageBooks = () => {
                 </th>
               </tr>
             </thead>
-            <tbody>
+{books?.result?.length > 0 ?             <tbody>
               {/* <!-- row 1 --> */}
 
               {allBooks
@@ -139,7 +139,7 @@ const ManageBooks = () => {
                         setDeleteBook={setDeleteBook}
                       ></ManageBooksRow>
                     ))}
-            </tbody>
+            </tbody> : <p className="w-full text-center py-3">Loading...</p> }
           </table>
           {books?.result?.length > 7 && (
             <div className="pt-7">
