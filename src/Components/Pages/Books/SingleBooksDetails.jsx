@@ -59,7 +59,7 @@ const SingleBooksDetails = () => {
               <p className="blog-desc p-5 md:px-10">{book?.description}</p>
             </div>
             <div className="pt-7">
-              <button onClick={() => navigate(`/checkout/${book?._id}`)} className="btn btn-outline btn-secondary flex items-center justify-center mx-auto">Checkout this Item <span className="text-2xl -mt-1">&#8608;</span></button>
+              <button onClick={() => navigate(`/checkout/${book?._id}`)} className="btn btn-outline btn-info flex items-center justify-center mx-auto">Checkout This Book <span className="text-2xl -mt-1">&#8608;</span></button>
             </div>
           </div>
         ) : (

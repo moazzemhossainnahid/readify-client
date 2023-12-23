@@ -37,7 +37,7 @@ const MyBooks = () => {
                                     <h5 className="text-gray-900 text-xl font-semibold mb-2">Book Name: <span className="text-green-700">{book?.product_name}</span></h5>
                                     <p className="text-gray-700 text-xs md:text-base font-semibold mb-4">Status: <span className=" text-xs md:text-base px-3 py-1 rounded-full bg-rose-700 text-white">{book?.paymentStatus}</span></p>
                                     <p className="text-gray-700 text-xs md:text-base font-semibold mb-4">Category: {book?.product_category}</p>
-                                    <p className="text-gray-700 text-xs md:text-base font-semibold mb-4">Descriptions: {book?.product_profile}</p>
+                                    <p className="text-gray-700 text-xs md:text-base font-semibold mb-4">Descriptions: {`${book?.product_profile?.slice(0,50)}...`}</p>
                                 </div>
                                 <div className="absolute right-2 bottom-2">
                                     {
