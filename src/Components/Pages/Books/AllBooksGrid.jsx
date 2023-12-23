@@ -8,12 +8,14 @@ const AllBooksGrid = ({ book }) => {
   const navigate = useNavigate();
 
   return (
-    <div onClick={() => navigate(`/books/${book?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
-      <div className=" mb-8 md:mb-0">
-        <div className="h-60">
-          <img src={book?.image} className="w-full h-60" />
+    <div onClick={() => navigate(`/books/${book?._id}`)} className="w-full cursor-pointer hover:shadow-2xl">
+      <div className="group mb-8 md:mb-0">
+        <div className="h-60 relative overflow-hidden">
+          <img src={book?.image} className="w-full h-64 border" />
+          <div className="absolute top-0 right-0 border-solid border-l-[15px] border-b-[15px] group-hover:border-l-[50px] group-hover:border-b-[50px] border-t-0 border-r-0 rotate-90 duration-700" style={{borderColor:"#ddd #fff"}}></div>
+
         </div>
-        <div className="bg-white">
+        <div className="bg-white shadow-lg">
           <div className="flex items-center justify-between px-4 pt-4">
             <div>
               <svg
