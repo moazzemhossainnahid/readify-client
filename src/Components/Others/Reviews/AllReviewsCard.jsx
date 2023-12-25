@@ -55,7 +55,7 @@ const AllReviewsCard = ({ review }) => {
         </div>
         <div className="mt-5">
           <p className="font-medium">{data?.name}</p>
-          <p className="text-sm text-gray-500">{data?.email}</p>
+          {/* <p className="text-sm text-gray-500">{data?.email}</p> */}
         </div>
       </div>
     </div>
