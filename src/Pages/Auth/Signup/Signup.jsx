@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { sendEmailVerification } from 'firebase/auth';
 import Loading from '../../../Components/Others/Loading/Loading';
- 
+
 const Signup = () => {
     const [createUserWithEmailAndPassword, cuser, cloading, cerror] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile] = useUpdateProfile(auth);
@@ -32,9 +32,16 @@ const Signup = () => {
         const displayName = data.name;
         const email = data.email;
         const password = data.password;
+        const phoneNumber = data.phoneNumber;
         await createUserWithEmailAndPassword(email, password)
         verifyEmail()
         await updateProfile({ displayName: displayName })
+        fetch(`https://readify-server-five.vercel.app/api/v1/users/${email}`, {
+            method: 'PUT',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ displayName, phoneNumber, email })
+        })
+            .then(res => res.json())
             .then(() => {
                 reset();
             })
@@ -84,6 +91,11 @@ const Signup = () => {
 
                                 <input {...register("email")} placeholder=" " required name="email" type="email" id="floating_standard" className="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-700 appearance-none dark:border-gray-600 dark:focus:green-blue-500 focus:outline-none focus:ring-0 focus:border-gray-600 peer" />
                                 <label htmlFor="floating_standard" className="absolute text-sm text-left w-full justify-start flex text-gray-700 dark:text-gray-700 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter Your Email</label>
+                            </div>
+                            <div className="relative z-0 my-2">
+
+                                <input {...register("phoneNumber")} placeholder=" " required name="phoneNumber" type="tel" id="floating_standard" className="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-700 appearance-none dark:border-gray-600 dark:focus:green-blue-500 focus:outline-none focus:ring-0 focus:border-gray-600 peer" />
+                                <label htmlFor="floating_standard" className="absolute text-sm text-left w-full justify-start flex text-gray-700 dark:text-gray-700 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter Your Phone</label>
                             </div>
                             <div className="relative z-0 my-2">
 

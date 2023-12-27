@@ -12,7 +12,7 @@ const Profile = () => {
     const [profile] = useProfile();
 
     const imageUrlKey = 'e738f1d16de6b265746b7f82cc157644';
- 
+
     // handle Update Profile 
 
     const handleUpdateProfile = async (data) => {
@@ -106,6 +106,10 @@ const Profile = () => {
                                     <label for="email" className="font-semibold text-gray-700 block pb-1">Email</label>
                                     <input disabled id="email" className="border-1 text-gray-500 rounded-r px-4 py-2 w-full" type="email" value={user?.email} />
                                 </div>
+                                {profile?.phoneNumber && <div className="pb-4">
+                                    <label for="phone" className="font-semibold text-gray-700 block pb-1">Phone</label>
+                                    <input disabled id="phone" className="border-1 text-gray-500 rounded-r px-4 py-2 w-full" type="email" value={profile?.phoneNumber} />
+                                </div>}
                                 <div className="pb-4">
                                     <label for="role" className="font-semibold text-gray-700 block pb-1">Role</label>
                                     <input disabled id="role" className="border-1 text-gray-500 rounded-r px-4 py-2 w-full" type="tel" value={profile?.role ? profile?.role : "user"} />

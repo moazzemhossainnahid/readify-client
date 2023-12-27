@@ -186,6 +186,7 @@ const Signin = () => {
                         <h3 className="font-bold text-lg">Reset Your Password</h3>
                         <div className="form-control">
                             <input
+                            ref={emailRef}
                                 required
                                 type="email"
                                 name="rsemail"
