@@ -39,7 +39,7 @@ const MyBooks = () => {
                                     <p className="text-gray-700 text-xs md:text-base font-semibold mb-4">Category: {book?.product_category}</p>
                                     <p className="text-gray-700 text-xs md:text-base font-semibold mb-4">Descriptions: {`${book?.product_profile?.slice(0,50)}...`}</p>
                                 </div>
-                                <div className="absolute right-2 bottom-2">
+                                {/* <div className="absolute right-2 bottom-2">
                                     {
                                         book?.review ? <label
                                             htmlFor="view-review-modal"
@@ -55,6 +55,17 @@ const MyBooks = () => {
                                             >
                                                 Add Review
                                             </label>
+                                    }
+                                </div> */}
+                                <div className="absolute right-2 bottom-2">
+                                    {
+                                        book?.review && <label
+                                            htmlFor="view-review-modal"
+                                            className="rounded btn btn-sm btn-info btn-outline"
+                                            onClick={() => setViewReview(book)}
+                                        >
+                                            View Your Review
+                                        </label>
                                     }
                                 </div>
                             </div>

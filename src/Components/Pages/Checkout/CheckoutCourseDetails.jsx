@@ -4,7 +4,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { faBangladeshiTakaSign } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const CheckoutitemDetails = ({ item, myOrders }) => {
+const CheckoutitemDetails = ({ item, myLastReviewedBook }) => {
 
   const months = [
     "January",
@@ -101,13 +101,13 @@ const CheckoutitemDetails = ({ item, myOrders }) => {
                 <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {(item?.price + item?.price / 100 * 5 + item?.price / 100 * 3).toFixed(2)}
               </p>
             </div>
-            {myOrders?.length > 0 && <div className="flex justify-between text-lg text-black text-opacity-90  my-2">
+            {myLastReviewedBook && <div className="flex justify-between text-lg text-black text-opacity-90  my-2">
               <p>Get Discount 15%</p>
               <p className=" border-b border-black">
                 <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {(item?.price / 100 * 15).toFixed(2)}
               </p>
             </div>}
-            {myOrders?.length > 0 && <div className="flex justify-between text-lg text-black text-opacity-90  my-2 mb-10">
+            {myLastReviewedBook && <div className="flex justify-between text-lg text-black text-opacity-90  my-2 mb-10">
               <p className="text-xl font-semibold ">Grand Total</p>
               <p className="text-xl font-semibold ">
                 = <FontAwesomeIcon icon={faBangladeshiTakaSign} /> {((item?.price + item?.price / 100 * 5 + item?.price / 100 * 3) - (item?.price / 100 * 15) ).toFixed(2)}

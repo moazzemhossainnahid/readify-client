@@ -39,7 +39,7 @@ const Signup = () => {
         fetch(`https://readify-server-five.vercel.app/api/v1/users/${email}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ displayName, phoneNumber, email })
+            body: JSON.stringify({phoneNumber, email })
         })
             .then(res => res.json())
             .then(() => {

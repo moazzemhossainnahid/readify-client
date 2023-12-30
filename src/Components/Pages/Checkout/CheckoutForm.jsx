@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../../firebase.init";
 
-const CheckoutForm = ({ item, setURLData, urlData, myOrders }) => {
+const CheckoutForm = ({ item, setURLData, urlData, myLastReviewedBook }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [phone, setPhone] = useState();
   const [address, setAddress] = useState();
@@ -37,7 +37,7 @@ const CheckoutForm = ({ item, setURLData, urlData, myOrders }) => {
       item_desc: item?.description,
       item_category: item?.category,
       item_image: item?.image,
-      total_amount: myOrders?.length > 0 ? ((item?.price + item?.price / 100 * 5 + item?.price / 100 * 3) - (item?.price / 100 * 15)).toFixed(2) : (item?.price + item?.price / 100 * 5 + item?.price / 100 * 3).toFixed(2),
+      total_amount: myLastReviewedBook ? ((item?.price + item?.price / 100 * 5 + item?.price / 100 * 3) - (item?.price / 100 * 15)).toFixed(2) : (item?.price + item?.price / 100 * 5 + item?.price / 100 * 3).toFixed(2),
       cus_name: user?.displayName,
       cus_email: user?.email,
       cus_phone: phone,

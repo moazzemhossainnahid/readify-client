@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Success = () => {
     const navigate = useNavigate();
-
-    // console.log(id);
     
     return (
         <main className='overflow-hidden bg-white w-full h-full'>

@@ -55,7 +55,7 @@ const AddReviewsModal = ({ addReview, setNumber, number }) => {
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <label htmlFor="add-review-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h1 className='mb-4 badge badge-error text-2xl badge-lg p-4'>Add Review for {addReview?.product_name}</h1>
+                    <h1 className='mb-4 text-2xl p-4'>Add Review for {addReview?.product_name}</h1>
                     <div className="w-full flex flex-col md:flex-row justify-between items-center gap-3">
                         <form
                             onSubmit={handleSubmit(handleAddReview)}
@@ -67,19 +67,19 @@ const AddReviewsModal = ({ addReview, setNumber, number }) => {
                                 type="number"
                                 required
                                 placeholder="Enter Rating (Must be in 1-5)"
-                                className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
+                                className="input bg-slate-200 my-2 input-ghost w-full block mx-auto"
                             />
                             <textarea
                                 {...register("review")}
                                 type="text"
                                 required
                                 placeholder="Enter Your Review"
-                                className="input bg-slate-100 my-2 h-24 input-ghost w-full block mx-auto"
+                                className="input bg-slate-200 my-2 h-24 input-ghost w-full block mx-auto"
                             />
                             <input
                                 className="btn px-7 btn-primary my-5 block mx-auto"
                                 type="submit"
-                                value="Add review"
+                                value="Add Review"
                             />
                         </form>
                     </div>
