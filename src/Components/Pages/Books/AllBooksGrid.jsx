@@ -1,18 +1,35 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TimeAgo from "../../Others/TimeAgo/TimeAgo";
 
 
-const AllBooksGrid = ({ book }) => {
+const AllBooksGrid = ({ book, myAllOrders }) => {
   const navigate = useNavigate();
+  const [prevOrder, setPrevOrder] = useState(null);
+
+
+  useEffect(() => {
+    myAllOrders && myAllOrders?.forEach(order => {
+      const productName = order?.product_name;
+      const productImage = order?.product_image;
+      const productCategory = order?.product_category;
+
+      if (book?.name === productName && book?.image === productImage && book?.category === productCategory) {
+        setPrevOrder(book)
+      }
+    });
+  }, [])
+
+
+  // console.log(prevOrder);
 
   return (
-    <div onClick={() => navigate(`/books/${book?._id}`)} className="w-full cursor-pointer hover:shadow-2xl">
-      <div className="group mb-8 md:mb-0">
+    <div onClick={prevOrder ? "" : () => navigate(`/books/${book?._id}`)} className="w-full cursor-pointer hover:shadow-2xl">
+      <div className="group mb-8 md:mb-0 relative select-none">
         <div className="h-60 relative overflow-hidden">
-          <img src={book?.image} className="w-full h-64 border" />
-          <div className="absolute top-0 right-0 border-solid border-l-[15px] border-b-[15px] group-hover:border-l-[50px] group-hover:border-b-[50px] border-t-0 border-r-0 rotate-90 duration-700" style={{borderColor:"#ddd #fff"}}></div>
+          <img draggable="false" src={book?.image} className="w-full h-64 border" />
+        {!prevOrder && <div className="absolute top-0 right-0 border-solid border-l-[15px] border-b-[15px] group-hover:border-l-[50px] group-hover:border-b-[50px] border-t-0 border-r-0 rotate-90 duration-700" style={{ borderColor: "#ddd #fff" }}></div>}
 
         </div>
         <div className="bg-white shadow-lg">
@@ -73,12 +90,17 @@ const AllBooksGrid = ({ book }) => {
                 {book?.sku.slice(0, 17)}
               </h2>
               <h3 className="text-indigo-700 text-xl font-semibold">
-              <span className="pr-1">&#2547;</span>
+                <span className="pr-1">&#2547;</span>
                 {book?.price}
               </h3>
             </div>
           </div>
         </div>
+        {
+          prevOrder && <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-t from-[#ffffff7f] to-[#00000058]">
+            <h3 className="select-none text-2xl font-bold bg-green-700 mt-28 ml-20 text-white flex items-center"> <img draggable="false" src="https://i.ibb.co/1n6hnft/attention-free-png.webp" alt="restricted" className="w-12 h-12 pl-2 drag" /> Already Purchased</h3>
+          </div>
+        }
       </div>
     </div>
   );
