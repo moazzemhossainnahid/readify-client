@@ -137,9 +137,9 @@ const Profile = () => {
                                 <span className="text-xl font-semibold block"><span className="text-rose-500">{profile && profile?.displayName || user && user?.displayName} <span className="text-gray-600">{`'s Book List`}</span></span></span>
                             </div>
                             <div className="rounded  shadow p-6">
-                                <div className="bg-white shadow rounded py-12 px-8 mb-20">
+                                <div className="rounded mb-20">
                                     <p className="md:text-3xl text-xl font-bold pb-10 leading-7 text-center text-gray-700">
-                                        Total Books: {myAllOrders?.length}
+                                        Total Purchased Books: {myAllOrders?.length}
                                     </p>
                                     <table className="border-collapse w-full bg-slate-200">
                                         <thead>
