@@ -19,7 +19,7 @@ const AllBooksGrid = ({ book, myAllOrders }) => {
         setPrevOrder(book)
       }
     });
-  }, [])
+  }, [myAllOrders, book, prevOrder])
 
 
   // console.log(prevOrder);
@@ -29,7 +29,7 @@ const AllBooksGrid = ({ book, myAllOrders }) => {
       <div className="group mb-8 md:mb-0 relative select-none">
         <div className="h-60 relative overflow-hidden">
           <img draggable="false" src={book?.image} className="w-full h-64 border" />
-        {!prevOrder && <div className="absolute top-0 right-0 border-solid border-l-[15px] border-b-[15px] group-hover:border-l-[50px] group-hover:border-b-[50px] border-t-0 border-r-0 rotate-90 duration-700" style={{ borderColor: "#ddd #fff" }}></div>}
+          {!prevOrder && <div className="absolute top-0 right-0 border-solid border-l-[15px] border-b-[15px] group-hover:border-l-[50px] group-hover:border-b-[50px] border-t-0 border-r-0 rotate-90 duration-700" style={{ borderColor: "#ddd #fff" }}></div>}
 
         </div>
         <div className="bg-white shadow-lg">
