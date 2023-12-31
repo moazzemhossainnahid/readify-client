@@ -4,12 +4,20 @@ import { useForm } from 'react-hook-form';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../../firebase.init';
 import useProfile from '../../../../Hooks/useProfile';
+import { useEffect, useState } from 'react';
 
 
 const Profile = () => {
     const { register, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
     const [profile] = useProfile();
+    const [orders, setOrders] = useState([]);
+
+    useEffect(() => {
+        fetch('https://readify-server-five.vercel.app/api/v1/orders')
+            .then(res => res.json())
+            .then(data => setOrders(data?.data?.result))
+    }, [])
 
     const imageUrlKey = 'e738f1d16de6b265746b7f82cc157644';
 
@@ -64,7 +72,11 @@ const Profile = () => {
 
     }
 
-    console.log(profile);
+
+    const myAllOrders = orders && orders?.filter(o => o?.cus_email === user?.email && o?.paymentStatus === "paid");
+
+    console.log(myAllOrders);
+
 
     return (
         <section className='bg-gradient-to-l from-secondary to-accent h-full w-full'>
@@ -118,6 +130,116 @@ const Profile = () => {
                             </div>
                         </div>
 
+                    </div>
+                    <div className="border-b-2 py-10">
+                        <div className="w-full p-8 bg-white lg:ml-4 shadow-md">
+                            <div className="py-5">
+                                <span className="text-xl font-semibold block"><span className="text-rose-500">{profile && profile?.displayName || user && user?.displayName} <span className="text-gray-600">{`'s Book List`}</span></span></span>
+                            </div>
+                            <div className="rounded  shadow p-6">
+                                <div className="bg-white shadow rounded py-12 px-8 mb-20">
+                                    <p className="md:text-3xl text-xl font-bold pb-10 leading-7 text-center text-gray-700">
+                                        Total Books: {myAllOrders?.length}
+                                    </p>
+                                    <table className="border-collapse w-full bg-slate-200">
+                                        <thead>
+                                            <tr className="text-center">
+                                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                                    Index
+                                                </th>
+                                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                                    Image
+                                                </th>
+                                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                                    Name
+                                                </th>
+                                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                                    Category
+                                                </th>
+                                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                                    Price
+                                                </th>
+                                                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        {myAllOrders?.length > 0 ? <tbody>
+                                            {myAllOrders
+                                                ? myAllOrders?.map((book, index) => (
+                                                    <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                                                    <td className="w-full lg:w-auto text-sm text-gray-800 text-center border border-b block font-semibold lg:table-cell relative lg:static">
+                                                        <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Index</span>
+                                                        {index + 1}
+                                                    </td>
+                                                    <td className="w-full lg:w-auto text-sm text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                                        <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Book Image</span>
+                                                        <img src={book?.product_image} alt="" className="w-12 h-12 rounded-full p-1" />
+                                                    </td>
+                                                    <td className="w-full lg:w-auto text-sm text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                                        <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Book Name</span>
+                                                        {book?.product_name} <br />
+                                                    </td>
+                                                    <td className="w-full lg:w-auto text-sm text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                                        <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Order Category</span>
+                                                        {book?.product_category}
+                                                    </td>
+                                                    <td className="w-full lg:w-auto font-bold text-green-700 text-sm text-center border border-b block lg:table-cell relative lg:static">
+                                                        <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Price</span>
+                                                        {book?.total_amount}
+                                                    </td>
+                                                    <td className="w-full lg:w-auto font-bold text-green-700 text-sm text-center border border-b block lg:table-cell relative lg:static">
+                                                        <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Payment Status</span>
+                                                        {book?.paymentStatus}
+                                                    </td>
+                                                </tr>
+                                                ))
+                                                : myAllOrders
+                                                    ?.slice(0, 7)
+                                                    ?.map((book, index) => (
+                                                        <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                                                        <td className="w-full lg:w-auto text-sm text-gray-800 text-center border border-b block font-semibold lg:table-cell relative lg:static">
+                                                            <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Index</span>
+                                                            {index + 1}
+                                                        </td>
+                                                        <td className="w-full lg:w-auto text-sm text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                                            <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Book Image</span>
+                                                            <img src={book?.product_image} alt="" className="w-12 h-12 rounded-full p-1" />
+                                                        </td>
+                                                        <td className="w-full lg:w-auto text-sm text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                                            <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Book Name</span>
+                                                            {book?.product_name} <br />
+                                                        </td>
+                                                        <td className="w-full lg:w-auto text-sm text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                                            <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Order Category</span>
+                                                            {book?.product_category}
+                                                        </td>
+                                                        <td className="w-full lg:w-auto font-bold text-green-700 text-sm text-center border border-b block lg:table-cell relative lg:static">
+                                                            <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Price</span>
+                                                            {book?.total_amount}
+                                                        </td>
+                                                        <td className="w-full lg:w-auto font-bold text-green-700 text-sm text-center border border-b block lg:table-cell relative lg:static">
+                                                            <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Payment Status</span>
+                                                            {book?.paymentStatus}
+                                                        </td>
+                                                    </tr>
+                                                    ))}
+                                        </tbody> : <p className="w-full text-center py-3">Loading...</p>}
+                                    </table>
+                                    {/* {books?.result?.length > 7 && (
+                                        <div className="pt-7">
+                                            <button
+                                                onClick={() => setAllBooks(!allBooks)}
+                                                className="btn btn-outline btn-secondary flex items-center justify-center mx-auto"
+                                            >
+                                                {`${allBooks ? "See Less Books" : "See More Books"}`}{" "}
+                                                <span className="text-2xl -mt-1">&#8608;</span>
+                                            </button>
+                                        </div>
+                                    )} */}
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
