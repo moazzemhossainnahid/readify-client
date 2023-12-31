@@ -4,6 +4,7 @@ import auth from '../../../../../firebase.init';
 import { useForm } from 'react-hook-form';
 import AddReviewsModal from './Modals/AddReviewsModal';
 import ViewReviewsModal from './Modals/ViewReviewsModal';
+import { Link } from 'react-router-dom';
 
 const MyBooks = () => {
     const [user] = useAuthState(auth);
@@ -25,7 +26,7 @@ const MyBooks = () => {
         <div className='container'>
             <div className="py-7">
                 <h3 className="text-3xl text-dark font-bold">My Books - {`${myBooks?.length}`}</h3>
-                <div className="w-full px-3 md:px-7 grid grid-cols-1 md:grid-cols-2 gap-3 justify-center items-center py-10 mx-auto h-full">
+                {myBooks?.length > 0 ? <div className="w-full px-3 md:px-7 grid grid-cols-1 md:grid-cols-2 gap-3 justify-center items-center py-10 mx-auto h-full">
                     {
                         myBooks?.map(book => (
 
@@ -37,7 +38,7 @@ const MyBooks = () => {
                                     <h5 className="text-gray-900 text-xl font-semibold mb-2">Book Name: <span className="text-green-700">{book?.product_name}</span></h5>
                                     <p className="text-gray-700 text-xs md:text-base font-semibold mb-4">Status: <span className=" text-xs md:text-base px-3 py-1 rounded-full bg-rose-700 text-white">{book?.paymentStatus}</span></p>
                                     <p className="text-gray-700 text-xs md:text-base font-semibold mb-4">Category: {book?.product_category}</p>
-                                    <p className="text-gray-700 text-xs md:text-base font-semibold mb-4">Descriptions: {`${book?.product_profile?.slice(0,50)}...`}</p>
+                                    <p className="text-gray-700 text-xs md:text-base font-semibold mb-4">Descriptions: {`${book?.product_profile?.slice(0, 50)}...`}</p>
                                 </div>
                                 {/* <div className="absolute right-2 bottom-2">
                                     {
@@ -72,7 +73,10 @@ const MyBooks = () => {
                         ))
                     }
 
-                </div>
+                </div> : <div className="py-20">
+                    <h3 className="text-2xl font-bold">You Currenly have no purchased Books.</h3>
+                    <p className="">Please visit <Link className='text-xl text-purple-600 underline' to={`/books`}>this link</Link> to buy some Books.</p>
+                </div>}
             </div>
             {addReview && (
                 <AddReviewsModal
