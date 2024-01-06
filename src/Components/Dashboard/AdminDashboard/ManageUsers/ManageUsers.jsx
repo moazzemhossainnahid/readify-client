@@ -17,12 +17,15 @@ const ManageUsers = () => {
       .then((data) => setUsers(data));
   }, [users]);
 
+  const OtherUsers = users?.filter(u => u?.role !== "superadmin");
+
+
   return (
     <div className=" text-left h-full w-full">
       <div className="w-full flex items-center justify-center my-12">
         <div className="bg-white shadow rounded py-12 px-8 mb-20">
           <p className="md:text-3xl text-xl font-bold pb-10 leading-7 text-center text-gray-700">
-            Total Users: {users?.length}
+            Total Users: {OtherUsers?.length}
           </p>
           <div className="w-full">
             <table className="border-collapse w-full bg-slate-200">
@@ -44,17 +47,17 @@ const ManageUsers = () => {
               </thead>
               <tbody>
                 {allUsers
-                  ? users?.map((user, index) => (
+                  ? OtherUsers?.map((user, index) => (
                       <UserDetails key={user._id} user={user} index={index} />
                     ))
-                  : users
+                  : OtherUsers
                       ?.slice(0, 7)
                       ?.map((user, index) => (
                         <UserDetails key={user._id} user={user} index={index} />
                       ))}
               </tbody>
             </table>
-            {users?.length > 7 && (
+            {OtherUsers?.length > 7 && (
               <div className="pt-7">
                 <button
                   onClick={() => setAllUsers(!allUsers)}
