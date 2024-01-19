@@ -14,6 +14,8 @@ const AllBooks = () => {
 
   const [searchKey, setSearchKey] = useState('');
   const [filteredBooks, setFilteredBooks] = useState([]);
+  const [categoryBook, setCategoryBook] = useState([]);
+
 
 
   useEffect(() => {
@@ -58,10 +60,34 @@ const AllBooks = () => {
     setFilteredBooks(books);
   };
 
+  /* ----------------------------------------------------------------*/
+  /*                   Filter By Books Category                    */
+  /* ----------------------------------------------------------------*/
+  const filterByCategory = (e) => {
+    const Category = e.target.value;
+    console.log("Category", Category);
+    if (Category === "All Books") {
+      setCategoryBook(books)
+    };
+    const result = books?.filter(book => book?.category === Category);
+    setFilteredBooks([]);
+    setCategoryBook(result);
+  };
 
-  const allBooks = filteredBooks;
+  console.log("categoryBooks", categoryBook);
 
-  console.log("allBooks",allBooks);
+    // Load Books By Filter Type
+    let loadBooks;
+
+    if (filteredBooks?.length > 0) {
+      loadBooks = filteredBooks
+    }
+    else if (categoryBook?.length > 0) {
+      loadBooks = categoryBook
+    }
+    else {
+      loadBooks = books
+    };
 
   return (
     <div className="w-full h-full py-20">
@@ -69,6 +95,22 @@ const AllBooks = () => {
         All Of Our Books
       </h1>
 
+      <div className="flex flex-col md:flex-row justify-between items-center gap-2 py-3 px-5">
+        <h3 className="text-gray-400 font-bold">Showing <span className="text-gray-500">{loadBooks?.length}</span> Total Results.</h3>
+        <div className="flex justify-between items-center gap-2 px-7">
+          <h3 className="text-gray-700 font-bold">Sort By:</h3>
+          <select onChange={filterByCategory} className="select bg-gray-300 max-w-xs">
+            <option disabled selected>Select Book Category</option>
+            <option key={`All Books`}>All Books</option>
+            {
+              [...new Set(books?.map(b => b?.category))].map(category => (
+                <option key={category}>{category}</option>
+              ))
+            }
+
+          </select>
+        </div>
+      </div>
 
       {/* Search Bar */}
       <SearchBar
@@ -78,9 +120,10 @@ const AllBooks = () => {
         handleSearchKey={(e) => setSearchKey(e.target.value)}
       />
 
-      {allBooks && allBooks?.length > 0 ?
+
+      {loadBooks && loadBooks?.length > 0 ?
         <div className="w-full md:w-5/6 mx-auto p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center">
-          {allBooks?.map((book) => (
+          {loadBooks?.map((book) => (
             <AllBooksGrid myAllOrders={myAllOrders} book={book} key={book?._id} />
           ))}
         </div> : <Loading />
